@@ -5,14 +5,14 @@
 본인폴더/
 |
 |---logs/
-|  |---models/
-|  |---vals/
+|   |---models/
+|   |---vals/
 |
 |---sm_dataset
-|   |---npy_train_img
+|   |---npy_train_img/
 |       |---train_img_0.npy
 |       |...
-|   |---train_mask
+|   |---train_mask/
 |       |---train_mask_0.npy
 |       |---...
 |
