@@ -15,6 +15,7 @@
 |   |---train_mask/
 |       |---train_mask_0.npy
 |       |---...
+|   |---sm_npy_train_meta.csv
 |
 |---baseline1.0.ipynb
 ```
