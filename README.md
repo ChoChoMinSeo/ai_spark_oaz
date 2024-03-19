@@ -8,14 +8,18 @@
 |   |---models/
 |   |---vals/
 |
-|---sm_dataset
-|   |---npy_train_img/
+|---dataset
+|   |---train_img/
 |       |---train_img_0.npy
 |       |...
 |   |---train_mask/
 |       |---train_mask_0.npy
 |       |---...
-|   |---sm_npy_train_meta.csv
+|   |---test_img/
+|       |---test_img_0.npy
+|       |---...
+|   |---train_meta_exp.csv
+|   |---test_meta_exp.csv
 |
 |---baseline1.0.ipynb
 ```
