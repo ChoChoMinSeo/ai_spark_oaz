@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 class FocalLoss(nn.Module):
     def __init__(self, alpha=1, gamma=2, logits=False, reduce=True):
@@ -20,13 +21,23 @@ class FocalLoss(nn.Module):
         else:
             return F_loss
 
-class FocalDiceLoss(nn.Module):
-    def __init__(self, focal_loss = FocalLoss()):
-        super(FocalDiceLoss, self).__init__()
-        self.focal_loss = focal_loss
-        
+class FocalDiceIouLoss(nn.Module):
+    def __init__(self, gamma=2,alpha=1,focal_w=1, dice_w=1, iou_w=1):
+        super(FocalDiceIouLoss, self).__init__()
+        self.gamma = gamma
+        self.alpha = alpha
+        self.focal_w= focal_w
+        self.dice_w = dice_w
+        self.iou_w = iou_w
         
     def forward(self, inputs, targets,smooth = 1e-5):
+        # focal loss
+        ce_loss = nn.BCEWithLogitsLoss(reduction='none')(inputs, targets)
+        pt = torch.exp(-ce_loss)
+        F_loss = self.alpha *( (1-pt)**self.gamma) * ce_loss
+        focal_loss = torch.mean(F_loss)
+        
+        # dice loss
         inputs = torch.sigmoid(inputs)
         intersection = (inputs*targets).sum(dim=(2,3))
         union = inputs.sum(dim=(2,3)) + targets.sum(dim=(2,3))
@@ -34,10 +45,14 @@ class FocalDiceLoss(nn.Module):
         dice_loss = 1.0 - dice
         dice_loss = torch.mean(dice_loss)
         
-        focal_loss = self.focal_loss(inputs,targets)
+        # iou loss
+        iou_union = union-intersection
+        iou_score = (intersection+smooth) / (iou_union+smooth)
+        jaccard_loss = 1-iou_score
+        jaccard_loss = torch.mean(jaccard_loss)
         
-        loss = dice_loss+focal_loss
-        return dice_loss, focal_loss, loss
+        loss = (self.dice_w*dice_loss) + (self.focal_w*focal_loss) + (self.iou_w*jaccard_loss)
+        return dice_loss, focal_loss, jaccard_loss, loss
 
 def iou_pytorch(outputs: torch.Tensor, labels: torch.Tensor, threshold):
     SMOOTH = 1e-9
