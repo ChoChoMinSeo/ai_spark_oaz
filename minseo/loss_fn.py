@@ -48,8 +48,8 @@ class FocalDiceIouLoss(nn.Module):
         # iou loss
         iou_union = union-intersection
         iou_score = (intersection+smooth) / (iou_union+smooth)
+        iou_score = torch.mean(iou_score)
         jaccard_loss = 1-iou_score
-        jaccard_loss = torch.mean(jaccard_loss)
         
         loss = (self.dice_w*dice_loss) + (self.focal_w*focal_loss) + (self.iou_w*jaccard_loss)
         return dice_loss, focal_loss, jaccard_loss, loss
