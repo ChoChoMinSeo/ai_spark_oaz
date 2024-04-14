@@ -8,6 +8,10 @@
 
 위성 데이터를 활용한 실시간 산불 감시 및 조기 탐지를 통해 산불 재난을 모니터링하고 예측하는 솔루션을 개발하는 문제입니다
 
+위성 사진
+
+[example image](./assets/Untitled%203.png)
+
 ### 프로젝트 요약
 
 - 재현성 검증을 위해 Seed 고정 및 학습한 가중치 관리의 필요성
@@ -17,9 +21,7 @@
 
 ### 협업 툴 링크
 
-노션 페이지
-
-[6th 2024 AI spark challenge](https://www.notion.so/6th-2024-AI-spark-challenge-d3e9941a89f245a680d783cc4a82ac43?pvs=21) 
+노션 페이지 [6th 2024 AI spark challenge](https://www.notion.so/6th-2024-AI-spark-challenge-d3e9941a89f245a680d783cc4a82ac43?pvs=21) 
 
 ### 프로젝트 목표
 
