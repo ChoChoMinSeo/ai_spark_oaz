@@ -46,7 +46,7 @@ ai_spark_oaz/
 │   ├── 제6회_2024_연구개발특구_AI_SPARK_챌린지_baseline.ipynb
 │   ├── baseline_ver1.0.ipynb
 │   ├── baseline_ver1.1.ipynb
-│   ├── baseline_ver1.2.ipynb
+│   └── baseline_ver1.2.ipynb
 │
 ├── models/ - FCN, CWUnet_v1, CWUnet_v2
 │   ├── fcn_model.py
