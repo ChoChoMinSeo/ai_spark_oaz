@@ -10,7 +10,7 @@
 
 위성 사진
 
-[example image](./assets/Untitled%203.png)
+![example image](./assets/Untitled%203.png)
 
 ### 프로젝트 요약
 
