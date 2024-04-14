@@ -53,9 +53,9 @@ ai_spark_oaz/
 │   ├── CWUnet.py
 │   └── CWUnet_2.py
 │
-├── utils/ - ensemble, defined loss functions
+└── utils/ - ensemble, defined loss functions
     ├── ensemble.ipynb
-    ├── loss_fn.py
+    └── loss_fn.py
 ```
 
 ## 2. 프로젝트 구성 및 역할 - 각자
